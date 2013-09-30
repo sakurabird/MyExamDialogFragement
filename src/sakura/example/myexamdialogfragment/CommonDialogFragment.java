@@ -34,6 +34,7 @@ public class CommonDialogFragment extends DialogFragment {
                             @Override
                             public void onClick(DialogInterface dialog, int whichButton) {
                                 listener.onPositiveClick();
+                                dismiss();
                             }
                         }
                 )
@@ -42,6 +43,7 @@ public class CommonDialogFragment extends DialogFragment {
                             @Override
                             public void onClick(DialogInterface dialog, int whichButton) {
                                 listener.onNegativeClick();
+                                dismiss();
                             }
                         }
                 )

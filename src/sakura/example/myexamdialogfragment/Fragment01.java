@@ -3,7 +3,6 @@ package sakura.example.myexamdialogfragment;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentTransaction;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -35,23 +34,11 @@ public class Fragment01 extends Fragment implements OnClickListener, DialogListe
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.button1:
-                // バックスタックに以前のFragmentがあれば取り除く
-                FragmentTransaction ft = getFragmentManager().beginTransaction();
-                Fragment prev = getFragmentManager().findFragmentByTag("CommonDialogFragment");
-                if (prev != null) {
-                    ft.remove(prev);
-                }
-                ft.addToBackStack(null);
-
-                // Create and show the dialog.
+                // 以前ゴチャゴチャやってたけどもっとシンプルに書けました。考慮不足で申し訳ありません！
                 CommonDialogFragment newFragment = CommonDialogFragment.newInstance(
                         "title", "this is message");
                 newFragment.setDialogListener(this);
-                newFragment.show(ft, "CommonDialogFragment");
-
-                if (newFragment.isVisible()) {
-                    newFragment.dismiss();
-                }
+                newFragment.show(getActivity().getSupportFragmentManager(), "CommonDialogFragment");
 
                 break;
 
